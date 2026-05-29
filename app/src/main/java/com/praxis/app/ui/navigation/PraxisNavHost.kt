@@ -9,7 +9,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.praxis.app.auth.AuthState
 import com.praxis.app.ui.screens.DashboardScreen
+import com.praxis.app.ui.screens.GoalTreeScreen
 import com.praxis.app.ui.screens.LoginScreen
+import com.praxis.app.ui.screens.ProfileScreen
 import com.praxis.app.ui.screens.SettingsScreen
 import com.praxis.app.ui.screens.SplashScreen
 
@@ -54,6 +56,24 @@ fun PraxisNavHost() {
                 onNavigateToSettings = {
                     navController.navigate(Screen.Settings.route)
                 },
+                onNavigateToGoals = {
+                    navController.navigate(Screen.GoalTree.route)
+                },
+                onNavigateToProfile = {
+                    navController.navigate(Screen.Profile.route)
+                },
+            )
+        }
+
+        composable(Screen.GoalTree.route) {
+            GoalTreeScreen(
+                onBack = { navController.popBackStack() },
+            )
+        }
+
+        composable(Screen.Profile.route) {
+            ProfileScreen(
+                onBack = { navController.popBackStack() },
             )
         }
 
